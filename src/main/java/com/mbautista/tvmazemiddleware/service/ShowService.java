@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 @Service
@@ -22,6 +23,10 @@ public class ShowService {
                 .filter(Objects::nonNull)
                 .map(this::mapToSearchResponse)
                 .toList();
+    }
+
+    public Map<String, Object> getShowById(Integer showId) {
+        return tvMazeClient.getShowById(showId);
     }
 
     private ShowSearchResponse mapToSearchResponse(TvMazeShowDto show) {

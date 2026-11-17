@@ -2,6 +2,7 @@ package com.mbautista.tvmazemiddleware.client;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Component;
@@ -26,5 +27,14 @@ public class TvMazeClient {
                 .body(new ParameterizedTypeReference<>() {
                 });
         return response != null ? response : Collections.emptyList();
+    }
+
+
+    @SuppressWarnings("unchecked")
+    public Map<String, Object> getShowById(Integer showId) {
+        return tvMazeRestClient.get()
+                .uri("/shows/{id}", showId)
+                .retrieve()
+                .body(Map.class);
     }
 }

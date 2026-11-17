@@ -23,4 +23,9 @@ public class ShowController {
             @RequestParam("search_query") @NotBlank(message = "search_query no puede estar vacío") String searchQuery) {
         return ResponseEntity.ok(showService.searchShows(searchQuery));
     }
+
+    @GetMapping("/{showId}")
+    public ResponseEntity<?> getShowById(@PathVariable("showId") Integer showId) {
+        return ResponseEntity.ok(showService.getShowById(showId)); 
+    } 
 }
